@@ -1,15 +1,15 @@
-# 🏔️ Optimizador de Escalada - Prueba OPA
+# Optimizador de Escalada - Prueba OPA
 
 Aplicación web para determinar el conjunto óptimo de elementos para escalar un risco, minimizando el peso total mientras se cumple con los requisitos calóricos mínimos.
 
-## 📋 Descripción del Problema
+## Descripción del Problema
 
-El **Optimizador de Escalada** resuelve una variante del *Problema de la Mochila (Knapsack Problem)* con criterio de minimización:
+El Optimizador de Escalada resuelve una variante del Problema de la Mochila (Knapsack Problem) con criterio de minimización:
 
-**Objetivo:** Encontrar el conjunto de elementos que:
-- ✅ Cumplan con las calorías mínimas requeridas
-- ✅ Tengan el menor peso posible
-- ✅ No excedan el peso máximo permitido
+Objetivo: Encontrar el conjunto de elementos que:
+- Cumplan con las calorías mínimas requeridas
+- Tengan el menor peso posible
+- No excedan el peso máximo permitido
 
 ### Ejemplo:
 ```
@@ -28,37 +28,37 @@ Solución Óptima:
 - E2 (3 kg, 5 kcal)
 - E4 (1 kg, 8 kcal)
 
-Total: 9 kg, 16 kcal ✅
+Total: 9 kg, 16 kcal
 ```
 
-## 🚀 Características Principales
+## Características Principales
 
-- **🎯 Algoritmo de Optimización Inteligente**
+- Algoritmo de Optimización Inteligente
   - Fuerza bruta optimizada para conjuntos pequeños (≤20 elementos)
   - Algoritmo greedy con mejora local para conjuntos grandes (>20 elementos)
   - Validaciones exhaustivas de entrada
 
-- **💾 Persistencia de Datos**
-  - Almacenamiento automático en `localStorage`
+- Persistencia de Datos
+  - Almacenamiento automático en localStorage
   - Exportar/Importar configuraciones en formato JSON
   - Historial de cálculos (hasta 50 registros)
 
-- **🎨 Interfaz Bonita y Responsive**
+- Interfaz Bonita y Responsive
   - Diseño moderno con Bootstrap 5
   - Animaciones suaves y feedback visual
   - Compatible con dispositivos móviles
 
-- **🔧 Gestión de Elementos**
+- Gestión de Elementos
   - Agregar, editar y eliminar elementos
   - Validación de IDs únicos
   - Vista de tabla interactiva
 
-- **📊 Visualización de Resultados**
+- Visualización de Resultados
   - Resumen detallado de la solución
   - Barras de progreso visuales
   - Cálculo de eficiencia (kcal/kg)
 
-## 🛠️ Tecnologías Utilizadas
+## Tecnologías Utilizadas
 
 - **HTML5** - Estructura semántica
 - **CSS3** - Estilos personalizados con variables CSS
@@ -66,9 +66,9 @@ Total: 9 kg, 16 kcal ✅
 - **Bootstrap 5** - Framework CSS (vía CDN)
 - **Bootstrap Icons** - Iconografía (vía CDN)
 
-**Nota:** No se utilizan frameworks backend ni librerías JavaScript adicionales, solo Vanilla JavaScript.
+Nota: No se utilizan frameworks backend ni librerías JavaScript adicionales, solo Vanilla JavaScript.
 
-## 📦 Instalación y Uso
+## Instalación y Uso
 
 ### Requisitos Previos
 - Navegador web moderno (Chrome, Firefox, Safari, Edge)
@@ -110,10 +110,10 @@ Total: 9 kg, 16 kcal ✅
 - **Importar Configuración:**
   - Click en "Importar" y selecciona un archivo JSON previamente exportado
 
-- **Limpiar Datos:**
+- Limpiar Datos:
   - Click en "Limpiar Todo" para resetear a valores por defecto
 
-## 📁 Estructura del Proyecto
+## Estructura del Proyecto
 
 ```
 prueba opa/
@@ -128,7 +128,7 @@ prueba opa/
 └── .gitignore             # Archivos ignorados por Git
 ```
 
-## 🧮 Algoritmo de Optimización
+## Algoritmo de Optimización
 
 ### Enfoque Implementado
 
@@ -156,12 +156,12 @@ La aplicación utiliza dos algoritmos según el tamaño del problema:
 
 ### Casos Especiales Manejados
 
-- ❌ No hay solución posible → Mensaje claro al usuario
-- ⚠️ Peso máximo insuficiente → Sugerencia de ajuste
-- ⚠️ Sin elementos disponibles → Solicita agregar elementos
-- ✅ Múltiples soluciones óptimas → Retorna una válida
+- No hay solución posible: Mensaje claro al usuario
+- Peso máximo insuficiente: Sugerencia de ajuste
+- Sin elementos disponibles: Solicita agregar elementos
+- Múltiples soluciones óptimas: Retorna una válida
 
-## 📊 ESCALABILIDAD DE LA SOLUCIÓN
+## ESCALABILIDAD DE LA SOLUCIÓN
 
 ### 1. Escalabilidad de Datos
 
@@ -314,9 +314,9 @@ const UsuarioSchema = new Schema({
 
 ### 4. Escalabilidad de Funcionalidades
 
-**Fácil de Agregar:**
+Fácil de Agregar:
 
-✅ **Restricciones Adicionales:**
+Restricciones Adicionales:
 ```javascript
 // Ejemplo: Agregar proteínas, vitaminas, etc.
 const elemento = {
@@ -334,7 +334,7 @@ function calcularMultiObjetivo(restricciones, elementos) {
 }
 ```
 
-✅ **Múltiples Objetivos:**
+Múltiples Objetivos:
 ```javascript
 // Optimización por:
 - Menor peso
@@ -343,13 +343,13 @@ function calcularMultiObjetivo(restricciones, elementos) {
 - Mejor relación costo/beneficio
 ```
 
-✅ **Comparación de Soluciones:**
+Comparación de Soluciones:
 ```javascript
 // Mostrar top 5 mejores soluciones
 const topSoluciones = encontrarTopN(5, elementos, restricciones);
 ```
 
-✅ **Exportar a PDF:**
+Exportar a PDF:
 ```javascript
 // Usar jsPDF (vía CDN)
 function exportarPDF(resultado) {
@@ -361,7 +361,7 @@ function exportarPDF(resultado) {
 }
 ```
 
-✅ **Gráficos de Comparación:**
+Gráficos de Comparación:
 ```javascript
 // Usar Chart.js (vía CDN)
 const ctx = document.getElementById('graficoCalorias').getContext('2d');
@@ -379,42 +379,11 @@ new Chart(ctx, {
 
 ### 5. Escalabilidad de Infraestructura
 
-**Estado Actual:**
+Estado Actual:
 - Archivos estáticos HTML/CSS/JS
 - Ejecución 100% en el navegador
 
-**Opciones de Deploy:**
-
-#### Opción 1: Hosting Estático (Gratis)
-```bash
-# GitHub Pages
-git init
-git add .
-git commit -m "Initial commit"
-git branch -M main
-git remote add origin <url>
-git push -u origin main
-
-# Activar GitHub Pages en Settings → Pages
-# URL: https://usuario.github.io/prueba-opa
-```
-
-#### Opción 2: Netlify
-```bash
-# netlify.toml
-[build]
-  publish = "."
-
-# Deploy con Netlify CLI
-netlify deploy --prod
-```
-
-#### Opción 3: Vercel
-```bash
-vercel --prod
-```
-
-**Mejora con CDN:**
+Mejora con CDN:
 ```
                     ┌─────────────┐
                     │  Cloudflare │
@@ -459,11 +428,11 @@ vercel --prod
 
 ### 6. Escalabilidad de Mantenimiento
 
-**Estado Actual:**
-- ✅ Código modular con IIFE (Immediately Invoked Function Expressions)
-- ✅ Comentarios JSDoc en funciones críticas
-- ✅ Separación clara de responsabilidades
-- ✅ Variables y funciones en español
+Estado Actual:
+- Código modular con IIFE (Immediately Invoked Function Expressions)
+- Comentarios JSDoc en funciones críticas
+- Separación clara de responsabilidades
+- Variables y funciones en español
 
 **Mejoras Propuestas:**
 
@@ -517,14 +486,14 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
 ```
 
-## 🔒 Seguridad
+## Seguridad
 
-- ✅ Escapado de HTML para prevenir XSS
-- ✅ Validación de entrada en todas las funciones
-- ✅ No hay ejecución de código dinámico (`eval`, `Function()`)
-- ✅ CSP (Content Security Policy) recomendado para producción
+- Escapado de HTML para prevenir XSS
+- Validación de entrada en todas las funciones
+- No hay ejecución de código dinámico (eval, Function())
+- CSP (Content Security Policy) recomendado para producción
 
-## 🤝 Contribuciones
+## Contribuciones
 
 Este proyecto es open-source. Para contribuir:
 
@@ -534,16 +503,12 @@ Este proyecto es open-source. Para contribuir:
 4. Push a la rama (`git push origin feature/nueva-funcionalidad`)
 5. Abre un Pull Request
 
-## 📄 Licencia
+## Licencia
 
 Este proyecto está bajo la Licencia MIT.
 
-## 👨‍💻 Autor
+## Autor
 
-Proyecto desarrollado como parte de **Prueba OPA** - Optimizador de Escalada
+Proyecto desarrollado como parte de Prueba OPA - Optimizador de Escalada
 
----
-
-**¿Preguntas o sugerencias?** Abre un issue en el repositorio.
-
-🏔️ ¡Feliz escalada!
+Preguntas o sugerencias: Abre un issue en el repositorio.
