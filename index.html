@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimizador de Escalada - Prueba OPA</title>
+    <meta name="author" content="Jeison L Zapata">
+    <meta name="description" content="Optimizador inteligente para determinar el conjunto óptimo de elementos para escalar">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <!-- Partículas de fondo -->
+    <div class="particulas-fondo"></div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <!-- Header -->
+                <header class="text-center py-5 mb-4 bg-gradient-header animate-header">
+                    <div class="header-icon-container mb-3">
+                        <i class="bi bi-mountains header-icon"></i>
+                    </div>
+                    <h1 class="display-3 fw-bold text-white animate-title">
+                        Optimizador de Escalada
+                    </h1>
+                    <p class="lead text-white animate-subtitle">
+                        Encuentra el conjunto óptimo de elementos para tu aventura
+                    </p>
+                    <div class="header-badges mt-3">
+                        <span class="badge badge-custom me-2">
+                            <i class="bi bi-lightning-charge-fill"></i> Algoritmo Inteligente
+                        </span>
+                        <span class="badge badge-custom me-2">
+                            <i class="bi bi-gear-wide-connected"></i> Optimización Avanzada
+                        </span>
+                        <span class="badge badge-custom">
+                            <i class="bi bi-graph-up"></i> Resultados en Tiempo Real
+                        </span>
+                    </div>
+                </header>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <!-- Columna Izquierda: Configuración y Elementos -->
+            <div class="col-lg-7">
+                <!-- Panel 1: Configuración del Risco -->
+                <div class="card card-moderna shadow-hover mb-4 fade-in-up">
+                    <div class="card-header-gradient bg-primary-gradient">
+                        <h5 class="mb-0">
+                            <i class="bi bi-gear-fill icono-rotativo"></i> Configuración del Risco
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="caloriasMinimas" class="form-label fw-bold">
+                                    <i class="bi bi-fire text-danger"></i> Calorías Mínimas Requeridas
+                                </label>
+                                <div class="input-group input-group-dynamic">
+                                    <span class="input-group-text">
+                                        <i class="bi bi-calculator"></i>
+                                    </span>
+                                    <input type="number" class="form-control input-modern" id="caloriasMinimas"
+                                           placeholder="Ej: 15" min="0" value="15">
+                                    <span class="input-group-text">kcal</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="pesoMaximo" class="form-label fw-bold">
+                                    <i class="bi bi-wallet2 text-success"></i> Peso Máximo Permitido
+                                </label>
+                                <div class="input-group input-group-dynamic">
+                                    <span class="input-group-text">
+                                        <i class="bi bi-speedometer2"></i>
+                                    </span>
+                                    <input type="number" class="form-control input-modern" id="pesoMaximo"
+                                           placeholder="Ej: 10" min="0" step="0.1" value="10">
+                                    <span class="input-group-text">kg</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Panel 2: Elementos Disponibles -->
+                <div class="card card-moderna shadow-hover mb-4 fade-in-up" style="animation-delay: 0.1s;">
+                    <div class="card-header-gradient bg-success-gradient d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">
+                            <i class="bi bi-box-seam icono-pulso"></i> Elementos Disponibles
+                        </h5>
+                        <button class="btn btn-light btn-sm boton-hover" data-bs-toggle="modal" data-bs-target="#modalAgregarElemento">
+                            <i class="bi bi-plus-circle"></i> Agregar Elemento
+                        </button>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0" id="tablaElementos">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th style="width: 15%">ID</th>
+                                        <th style="width: 25%">Peso (kg)</th>
+                                        <th style="width: 30%">Calorías (kcal)</th>
+                                        <th style="width: 30%" class="text-center">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="listaElementos">
+                                    <!-- Los elementos se cargarán dinámicamente -->
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="card-footer bg-light">
+                            <small class="text-muted">
+                                <i class="bi bi-info-circle"></i>
+                                Total de elementos: <span id="totalElementos">0</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Panel 3: Acciones -->
+                <div class="card card-moderna shadow-hover mb-4 fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="card-body text-center py-4">
+                        <button class="btn btn-primary-gradient btn-lg px-5 mb-3 boton-principal" id="btnCalcular">
+                            <i class="bi bi-calculator"></i> CALCULAR ELEMENTOS ÓPTIMOS
+                            <span class="boton-brillo"></span>
+                        </button>
+                        <div class="d-flex justify-content-center gap-2 flex-wrap">
+                            <button class="btn btn-outline-success boton-hover" id="btnExportar">
+                                <i class="bi bi-download"></i> Exportar
+                            </button>
+                            <button class="btn btn-outline-info boton-hover" id="btnImportar">
+                                <i class="bi bi-upload"></i> Importar
+                            </button>
+                            <input type="file" id="archivoImportar" accept=".json" class="d-none">
+                            <button class="btn btn-outline-danger boton-hover" id="btnLimpiar">
+                                <i class="bi bi-trash"></i> Limpiar Todo
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Columna Derecha: Resultados -->
+            <div class="col-lg-5">
+                <!-- Panel 4: Resultado -->
+                <div class="card card-moderna shadow-hover sticky-top fade-in-up" style="top: 20px; animation-delay: 0.3s;">
+                    <div class="card-header-gradient bg-info-gradient">
+                        <h5 class="mb-0">
+                            <i class="bi bi-clipboard-check icono-bounce"></i> Resultado de la Optimización
+                        </h5>
+                    </div>
+                    <div class="card-body" id="panelResultado">
+                        <div class="text-center text-muted py-5 resultado-vacio">
+                            <div class="icono-resultado-vacio">
+                                <i class="bi bi-search icono-flotante"></i>
+                            </div>
+                            <p class="mt-4 fw-bold">Configura los parámetros</p>
+                            <p class="small">Presiona <strong class="text-primary">CALCULAR</strong> para ver el resultado óptimo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer-custom text-center py-4 mt-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <p class="copyright mb-2">
+                            <i class="bi bi-c-circle"></i> 2025
+                            <strong>Jeison L Zapata</strong> - Todos los derechos reservados
+                        </p>
+                        <p class="small text-muted">
+                            Proyecto: Prueba OPA | Versión 1.0
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Modal: Agregar/Editar Elemento -->
+    <div class="modal fade" id="modalAgregarElemento" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="tituloModal">
+                        <i class="bi bi-plus-circle"></i> Agregar Nuevo Elemento
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formularioElemento">
+                        <input type="hidden" id="elementoIdEditar">
+                        <div class="mb-3">
+                            <label for="elementoId" class="form-label fw-bold">ID del Elemento</label>
+                            <input type="text" class="form-control" id="elementoId"
+                                   placeholder="Ej: E1, Manzana, etc." required>
+                            <div class="form-text">Identificador único para el elemento</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="elementoPeso" class="form-label fw-bold">Peso (kg)</label>
+                            <input type="number" class="form-control" id="elementoPeso"
+                                   placeholder="Ej: 2.5" min="0.1" step="0.1" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="elementoCalorias" class="form-label fw-bold">Calorías (kcal)</label>
+                            <input type="number" class="form-control" id="elementoCalorias"
+                                   placeholder="Ej: 150" min="1" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Cancelar
+                    </button>
+                    <button type="button" class="btn btn-success" id="btnGuardarElemento">
+                        <i class="bi bi-save"></i> Guardar Elemento
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Scripts de la aplicación -->
+    <script src="js/almacenamiento.js"></script>
+    <script src="js/optimizador.js"></script>
+    <script src="js/aplicacion.js"></script>
+</body>
+</html>
