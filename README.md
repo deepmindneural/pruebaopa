@@ -509,6 +509,8 @@ Este proyecto está bajo la Licencia MIT.
 
 ## Autor
 
+**Jeison L Zapata**
+
 Proyecto desarrollado como parte de Prueba OPA - Optimizador de Escalada
 
 Preguntas o sugerencias: Abre un issue en el repositorio.
